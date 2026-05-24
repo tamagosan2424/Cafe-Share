@@ -21,7 +21,7 @@ RUN apt-get install -y nodejs
 RUN cd /usr/bin && curl -s http://getcomposer.org/installer | php && ln -s /usr/bin/composer.phar /usr/bin/composer
 
 # node使いたいバージョン指定
-ENV NODE_VERSION=20.9.0
+ENV NODE_VERSION=20.19.0
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 ENV NVM_DIR=/root/.nvm
 RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
