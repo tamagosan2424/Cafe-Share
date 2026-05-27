@@ -52,7 +52,7 @@ return new class extends Migration
         $table->id();
         $table->foreignId('user_id')->constrained();
         $table->foreignId('cafe_id')->constrained();
-        $table->integer('rating');
+        $table->unsignedTinyInteger('rating')->default(0)->nullable(false);
         $table->text('comment')->nullable();
         });
 
