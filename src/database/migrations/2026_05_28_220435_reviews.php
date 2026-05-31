@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reviews', function (Blueprint $table){
-        $table->id();
-        $table->foreignId('user_id')->constrained();
-        $table->foreignId('cafe_id')->constrained();
-        $table->unsignedTinyInteger('rating')->default(0)->nullable(false);
-        $table->text('comment')->nullable();
+        Schema::create('reviews', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('cafe_id')->constrained();
+            $table->unsignedTinyInteger('rating')->default(0);
+            $table->text('comment')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

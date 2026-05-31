@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cafes', function (Blueprint $table){
-        $table->id();
-        $table->foreignId('user_id')->constrained();
-        $table->string('name');
-        $table->text('description')->nullable();
-        $table->string('address');
-        $table->string('phone_number');
-        $table->string('opening_at');
-        $table->string('closing_at');
+        Schema::create('cafes', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->string('address');
+            $table->string('phone_number');
+            $table->time('opening_at');
+            $table->time('closing_at');
+            $table->timestamps();
+            $table->softDeletes();
         });
         
     }

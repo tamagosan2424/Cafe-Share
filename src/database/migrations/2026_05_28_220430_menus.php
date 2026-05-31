@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('menus', function (Blueprint $table){
-        $table->id();
-        $table->foreignId('cafe_id')->constrained();
-        $table->string('name');
-        $table->text('description')->nullable();
-        $table->string('price');
-        $table->string('image');
-        });        
+        Schema::create('menus', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('cafe_id')->constrained();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->decimal('price', 10, 2)->unsigned();
+            $table->string('image')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
     }
 
     /**
