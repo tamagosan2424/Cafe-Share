@@ -14,12 +14,22 @@ class ReviewsSeeder extends Seeder
     public function run(): void
     {
         DB::table('reviews')->insert([
-            'user_id'       => '1',
-            'cafe_id'       => '1',
-            'rating'        => '5',
-            'comment'       =>'作業にも向いているし、味も最高です。',
-            'created_at'    => now(),
-            'updated_at'    => now(),               
+            [
+                'user_id'       => '1',
+                'cafe_id'       => '1',
+                'rating'        => '5',
+                'comment'       =>'作業にも向いているし、味も最高です。',
+                'created_at'    => now(),
+                'updated_at'    => now(),               
+            ],
+            [
+                'user_id'       => '2',
+                'cafe_id'       => '2',
+                'rating'        => '3',
+                'comment'       =>'待ち時間が長くて嫌だった。',
+                'created_at'    => now(),
+                'updated_at'    => now(),                  
+            ],
         ]);
     }
 }
