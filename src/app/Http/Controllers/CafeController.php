@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Cafe;
 use Inertia\Inertia;
 
 class CafeController extends Controller
 {
     public function index()
     {
-        $users = User::all(); //データを取得
-        return Inertia::render('Cafe/Index', ['users' => $users]);
+        $cafes = Cafe::withAvg('reviews', 'rating')->get(); //データを取得。
+        return Inertia::render('Cafe/Index', ['cafes' => $cafes]);
+
+        
+
     }
 }

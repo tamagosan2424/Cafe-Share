@@ -1,3 +1,461 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ---------- カラー変数 ---------- */
+:root {
+    --cafe-share-red:      #c9171e;
+    --cafe-share-red-dark: #a50f15;
+    --cafe-share-gold:     #e8a400;
+    --cafe-share-star-empty: #d0d0d0;
+    --cafe-share-link:     #1d6fa4;
+    --cafe-share-bg:       #f5f5f0;
+    --cafe-share-border:   #e0e0e0;
+    --cafe-share-text:     #333333;
+    --cafe-share-gray:     #888888;
+}
+
+/* ---------- ベース ---------- */
+body {
+    background-color: var(--cafe-share-bg);
+    color: var(--cafe-share-text);
+    font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ---------- ヘッダー ---------- */
+.cafe-share-header {
+    background-color: var(--cafe-share-red);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.header-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-logo {
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+}
+.site-logo:hover {
+    opacity: 0.85;
+}
+
+.header-nav {
+    display: flex;
+    gap: 20px;
+}
+.header-nav a {
+    color: rgba(255,255,255,0.88);
+    text-decoration: none;
+    font-size: 13px;
+}
+.header-nav a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* ---------- 検索バー ---------- */
+.search-bar-area {
+    background-color: #a50f15;
+    padding: 12px 0;
+}
+.search-bar-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+.search-bar {
+    display: flex;
+    gap: 6px;
+    align-items: stretch;
+}
+.search-input-wrap {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 4px;
+    padding: 0 10px;
+    gap: 6px;
+}
+.search-icon {
+    font-size: 15px;
+    line-height: 1;
+}
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    padding: 8px 0;
+    background: transparent;
+    color: var(--cafe-share-text);
+}
+.search-input::placeholder {
+    color: #bbb;
+}
+.search-btn {
+    background-color: #e8a400;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    padding: 0 22px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+.search-btn:hover {
+    background-color: #cc9100;
+}
+
+/* ---------- メインコンテナ ---------- */
+.main-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px 16px 40px;
+}
+
+/* ---------- パンくず ---------- */
+.breadcrumb {
+    font-size: 12px;
+    color: var(--cafe-share-gray);
+    margin-bottom: 12px;
+}
+.breadcrumb a {
+    color: var(--cafe-share-link);
+    text-decoration: none;
+}
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+.breadcrumb-sep {
+    margin: 0 6px;
+    color: #bbb;
+}
+
+/* ---------- 結果ヘッダー ---------- */
+.result-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 14px;
+    border-bottom: 2px solid var(--cafe-share-red);
+    padding-bottom: 10px;
+}
+.result-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--cafe-share-text);
+}
+.result-count {
+    font-size: 13px;
+    color: var(--cafe-share-gray);
+}
+.result-count strong {
+    color: var(--cafe-share-red);
+    font-size: 16px;
+}
+
+/* ---------- フィルタータグ ---------- */
+.filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    background: #fff;
+    border: 1px solid var(--cafe-share-border);
+    border-radius: 6px;
+    padding: 10px 14px;
+}
+.filter-label {
+    font-size: 12px;
+    color: var(--cafe-share-gray);
+    white-space: nowrap;
+}
+.filter-tag {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--cafe-share-gray);
+    background: #f0f0f0;
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+    padding: 3px 10px;
+    text-decoration: none;
+    transition: all 0.15s;
+}
+.filter-tag:hover,
+.filter-tag.active {
+    background-color: var(--cafe-share-red);
+    border-color: var(--cafe-share-red);
+    color: #fff;
+}
+
+/* ---------- ソートバー ---------- */
+.sort-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    font-size: 12px;
+    color: var(--cafe-share-gray);
+}
+.sort-link {
+    color: var(--cafe-share-link);
+    text-decoration: none;
+}
+.sort-link:hover {
+    text-decoration: underline;
+}
+.sort-link.active {
+    color: var(--cafe-share-red);
+    font-weight: bold;
+    text-decoration: none;
+    pointer-events: none;
+}
+.sort-sep {
+    color: #ccc;
+}
+
+/* ---------- カフェカードリスト ---------- */
+.cafe-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* ---------- カフェカード ---------- */
+.cafe-card {
+    display: flex;
+    background: #fff;
+    border: 1px solid var(--cafe-share-border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.1s;
+}
+.cafe-card:hover {
+    box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+    transform: translateY(-1px);
+}
+
+/* ---------- カード画像 ---------- */
+.cafe-img-link {
+    flex-shrink: 0;
+    display: block;
+    text-decoration: none;
+}
+.cafe-img-placeholder {
+    width: 160px;
+    height: 160px;
+    background: linear-gradient(135deg, #f9e4d4 0%, #f0c8a8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+}
+.cafe-img-placeholder--blue {
+    background: linear-gradient(135deg, #d4e8f9 0%, #a8cef0 100%);
+}
+.cafe-img-link:hover .cafe-img-placeholder {
+    opacity: 0.85;
+}
+.cafe-img-icon {
+    font-size: 48px;
+    opacity: 0.6;
+}
+
+/* ---------- カード情報エリア ---------- */
+.cafe-info {
+    flex: 1;
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+.cafe-info-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+/* カフェ名 */
+.cafe-name {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--cafe-share-link);
+    text-decoration: none;
+    line-height: 1.3;
+}
+.cafe-name:hover {
+    text-decoration: underline;
+    color: var(--cafe-share-red);
+}
+
+/* カテゴリ */
+.cafe-category {
+    font-size: 12px;
+    color: var(--cafe-share-gray);
+    margin-top: 3px;
+}
+
+/* ---------- 評価エリア ---------- */
+.cafe-rating-area {
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* スコア数値 */
+.cafe-score {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--cafe-share-red);
+    line-height: 1.2;
+}
+.cafe-score--no-review {
+    color: #bbb;
+    font-size: 20px;
+}
+
+/* 星 */
+.cafe-stars {
+    display: flex;
+    gap: 1px;
+    justify-content: center;
+    margin: 2px 0;
+}
+.star {
+    font-size: 16px;
+    line-height: 1;
+}
+.star.filled {
+    color: var(--cafe-share-gold);
+}
+.star.half {
+    color: var(--cafe-share-gold);
+    opacity: 0.5;
+}
+.star.empty {
+    color: var(--cafe-share-star-empty);
+}
+
+/* レビュー件数 */
+.cafe-review-count {
+    font-size: 11px;
+    color: var(--cafe-share-gray);
+    white-space: nowrap;
+}
+.cafe-review-count strong {
+    color: var(--cafe-share-text);
+}
+
+/* ---------- 説明文 ---------- */
+.cafe-description {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ---------- 詳細情報 ---------- */
+.cafe-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.cafe-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--cafe-share-gray);
+}
+.detail-icon {
+    font-size: 13px;
+    line-height: 1;
+}
+
+/* ---------- カフェタグ ---------- */
+.cafe-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+}
+.cafe-tag {
+    display: inline-block;
+    font-size: 11px;
+    color: #1d6fa4;
+    background: #eaf4fb;
+    border: 1px solid #c0ddef;
+    border-radius: 3px;
+    padding: 2px 8px;
+}
+
+/* ---------- フッター ---------- */
+.site-footer {
+    background: #333;
+    color: #aaa;
+    margin-top: 40px;
+    padding: 24px 16px;
+}
+.footer-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+.footer-logo {
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+.footer-copy {
+    font-size: 12px;
+}
+
+/* ---------- レスポンシブ ---------- */
+@media (max-width: 640px) {
+    .search-bar {
+        flex-direction: column;
+    }
+    .search-btn {
+        padding: 10px;
+    }
+    .cafe-card {
+        flex-direction: column;
+    }
+    .cafe-img-placeholder {
+        width: 100%;
+        height: 140px;
+    }
+    .cafe-info-top {
+        flex-direction: column;
+    }
+    .cafe-rating-area {
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .filter-tags {
+        gap: 6px;
+    }
+}
