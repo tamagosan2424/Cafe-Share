@@ -54,12 +54,14 @@ body {
     display: flex;
     gap: 20px;
 }
-.header-nav a {
+.header-nav a,
+.header-nav button {
     color: rgba(255,255,255,0.88);
     text-decoration: none;
     font-size: 13px;
 }
-.header-nav a:hover {
+.header-nav a:hover,
+.header-nav button:hover  {
     color: #fff;
     text-decoration: underline;
 }
@@ -351,6 +353,14 @@ body {
 }
 .star.empty {
     color: var(--cafe-share-star-empty);
+}
+
+/* 星の隣に表示する平均点の数値 */
+.cafe-rating-value {
+    margin-left: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--cafe-share-gold);
 }
 
 /* レビュー件数 */

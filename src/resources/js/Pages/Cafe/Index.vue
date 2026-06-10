@@ -38,14 +38,18 @@ const starClass = (avg, position) => {
                             <a href="#" class ="cafe-name">{{ cafe.name }}</a>
                             <div class="cafe-category">{{ cafe.address }}</div>
                         </div>
-                    <div class="cafe-rating-area">
-                        <div class="cafe-score cafe-score--no-review"></div>
+                        <div class="cafe-rating-area">
+                            <div class="cafe-score cafe-score--no-review">-</div>
                             <div class="cafe-stars">
                                 <span v-for="position in 5" :key="position" class="star" :class="starClass(cafe.reviews_avg_rating, position)">★</span>
+                                <span v-if="cafe.reviews_avg_rating" class="cafe-rating-value">{{ Number(cafe.reviews_avg_rating).toFixed(1) }}</span>
                             </div>
+                            <div class="cafe-review-count">レビュー <strong>{{ cafe.reviews_count }}</strong> 件</div>
+                        </div>
                     </div>
-                    </div>
+                    <p class="cafe-description">{{ cafe.description }}</p>
                 </div>
+
             </article>
         </div>
     </AuthenticatedLayout>

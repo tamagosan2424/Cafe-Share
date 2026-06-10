@@ -10,7 +10,9 @@ class CafeController extends Controller
 {
     public function index()
     {
-        $cafes = Cafe::withAvg('reviews', 'rating')->get(); //データを取得。
+        $cafes = Cafe::withAvg('reviews', 'rating')
+        ->withCount('reviews')
+        ->get(); //データを取得。
         return Inertia::render('Cafe/Index', ['cafes' => $cafes]);
 
         
