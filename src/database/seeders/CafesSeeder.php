@@ -35,6 +35,17 @@ class CafesSeeder extends Seeder
                 'created_at'   => now(),
                 'updated_at'   => now(),
             ],
+            [
+                'user_id'      => 3,
+                'name'         => '無名珈琲店',
+                'description'  => '閑古鳥が鳴いてます',
+                'address'      => '東京都新宿区3-3-3',
+                'phone_number' => '03-9876-5432',
+                'opening_at'   => '8:00:00',
+                'closing_at'   => '9:00:00',
+                'created_at'   => now(),
+                'updated_at'   => now(),
+            ],            
         ]);
     }
 }

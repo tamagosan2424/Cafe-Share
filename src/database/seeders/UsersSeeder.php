@@ -29,6 +29,13 @@ class UsersSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name'       => Str::random(10),
+                'email'      => Str::random(10).'@outlook.com',
+                'password'   => Hash::make('password'),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }

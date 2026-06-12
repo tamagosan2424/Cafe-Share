@@ -30,6 +30,14 @@ class ReviewsSeeder extends Seeder
                 'created_at'    => now(),
                 'updated_at'    => now(),                  
             ],
+            [
+                'user_id'       => '2',
+                'cafe_id'       => '1',
+                'rating'        => '4',
+                'comment'       =>'平均点を出してみたい。',
+                'created_at'    => now(),
+                'updated_at'    => now(),                  
+            ],            
         ]);
     }
 }
