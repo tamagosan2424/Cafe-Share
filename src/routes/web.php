@@ -20,9 +20,7 @@ Route::get('/', function(){
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [CafeController::class, 'index'])->name('dashboard');
 
     Route::get('cafes', [CafeController::class, 'index'])->name('cafes.index');
     
