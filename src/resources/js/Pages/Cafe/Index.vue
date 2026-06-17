@@ -10,7 +10,7 @@ const starClass = (avg, position) => {
     if (score >= position - 0.5) return 'half';  // 端数0.5は半分
     return 'empty';                          // それ以外は空
 };
-//現状だと開店・閉店時間が秒数まで表示されるので削る。
+//開店・閉店時間の秒数非表示
 const formatTime = (t) => (t ? t.slice(0, 5) : '');
 </script>
 

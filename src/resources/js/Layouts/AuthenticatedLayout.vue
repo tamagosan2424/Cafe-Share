@@ -10,6 +10,7 @@ import { Link } from '@inertiajs/vue3';
                 <div class="header-inner">
                     <Link :href="route('dashboard')" class="site-logo">☕ Cafe Share</Link>
                     <nav class="header-nav">
+                        <Link :href="route('cafes.create')">新規カフェ追加</Link>
                         <Link :href="route('profile.edit')">マイページ</Link>
                         <Link :href="route('logout')" method="post" as="button">ログアウト</Link>
                     </nav>
@@ -21,7 +22,7 @@ import { Link } from '@inertiajs/vue3';
                 class="bg-white shadow"
                 v-if="$slots.header"
             >
-                <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                <div style="max-width:1000px; margin:0 auto; padding:18px 16px;">
                     <slot name="header" />
                 </div>
             </header>

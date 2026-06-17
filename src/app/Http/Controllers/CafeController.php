@@ -18,4 +18,22 @@ class CafeController extends Controller
         
 
     }
+
+    public function create()
+    {
+        return Inertia::render('Cafe/Create');
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name'      =>'required|string|max:255',
+            'address'   =>'required|string|max:255',
+        ]);
+
+        $validated['user_id']=$request->user()->id;
+        Cafe::create($validated); //配列をまとめて保存
+        return redirect()->route('cafe.index');
+    }
 }
+
