@@ -28,7 +28,7 @@ const submit = () => {
 
         <!-- フォームカード -->
         <div class="create-form-card">
-            <h3 class="create-form-title">カフェを追加する</h3>
+            <h3 class="create-form-title">新規カフェ追加</h3>
             <form @submit.prevent="submit" class="create-form">
                 <!-- カフェ名 -->
                  <div class="form-group">
