@@ -469,3 +469,63 @@ body {
         gap: 6px;
     }
 }
+/* ---------- 新規追加フォーム ---------- */
+.create-form-card {
+    background: #fff;
+    border: 1px solid var(--cafe-share-border);
+    border-radius: 8px;
+    padding: 32px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.create-form-title {
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 2px solid var(--cafe-share-red);
+    padding-bottom: 10px;
+    margin-bottom: 24px;
+}
+.create-form { display: flex; flex-direction: column; gap: 20px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-label { font-size: 13px; font-weight: bold; }
+.required { color: var(--cafe-share-red); }
+.form-input {
+    border: 1px solid var(--cafe-share-border);
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.form-input:focus {
+    border-color: var(--cafe-share-gray);
+    box-shadow: 0 0 0 2px rgba(201,23,30,0.1);
+}
+.form-textarea { resize: vertical; min-height: 100px; }
+.form-error { font-size: 12px; color: var(--cafe-share-red); }
+.time-range { display: flex; align-items: center; gap: 10px; }
+.form-input-time { width: 80px; }
+.time-sep { color: var(--cafe-share-gray); }
+.form-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 8px; }
+.btn-cancel {
+    padding: 10px 24px;
+    border: 1px solid var(--cafe-share-border);
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--cafe-share-gray);
+    text-decoration: none;
+    background: #fff;
+}
+.btn-cancel:hover { background: #f5f5f0; }
+.btn-submit {
+    padding: 10px 28px;
+    background-color: var(--cafe-share-red);
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.btn-submit:hover { background-color: var(--cafe-share-red-dark); }
+.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }

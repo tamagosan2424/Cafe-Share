@@ -45,14 +45,17 @@ const submit = () => {
                 <!-- 電話番号-->
                 <div class="form-group">
                     <label class="form-label">電話番号</label>
-                    <input v-model="form.phone_number" type="text" class="form-input" placeholder="例:123-4567">
+                    <!--半角数字以外の文字の入力を自動削除-->
+                    <input v-model="form.phone_number" type="text" class="form-input" placeholder="例:123-4567" @input="form.phone_number = form.phone_number.replace(/[^0-9\-]/g, '')" @compositionend="form.phone_number = form.phone_number.replace(/[^0-9\-]/g, '')">
                 </div>
                 <!-- 営業時間-->
                 <div class="form-group">
                     <label class="form-label">営業時間</label>
-                    <input v-model="form.opening_at" type="time" class="form-input-time">
-                    <span class="time-sep">〜</span>
-                    <input v-model="form.closing_at" type="time" class="form-input-time">
+                    <div class="time-range">
+                        <input v-model="form.opening_at" type="time" class="form-input-time">
+                        <span class="time-sep">〜</span>
+                        <input v-model="form.closing_at" type="time" class="form-input-time">
+                    </div>
                 </div>
                 <!-- 紹介文-->
                 <div class="form-group">
@@ -64,7 +67,7 @@ const submit = () => {
                 <div class="form-actions">
                     <Link :href="route('cafes.index')" class="btn-cancel">キャンセル</Link>
                     <button type="submit" class="btn-submit" :disabled="form.processing">
-                        追加する ▶
+                        追加する
                     </button>
                 </div>
             </form>

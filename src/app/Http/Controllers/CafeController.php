@@ -27,13 +27,17 @@ class CafeController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name'      =>'required|string|max:255',
-            'address'   =>'required|string|max:255',
+            'name'          =>'required|string|max:255',
+            'address'       =>'required|string|max:255',
+            'phone_number'  =>'nullable|string|max:20',
+            'opening_at'    =>'nullable|date_format:H:i',
+            'closing_at'    =>'nullable|date_format:H:i',
+            'description'   =>'nullable|string'
         ]);
 
         $validated['user_id']=$request->user()->id;
         Cafe::create($validated); //配列をまとめて保存
-        return redirect()->route('cafe.index');
+        return redirect()->route('dashboard');
     }
 }
 
