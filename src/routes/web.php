@@ -20,14 +20,15 @@ Route::get('/', function(){
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [CafeController::class, 'index'])->name('dashboard');
-    Route::get('cafes', [CafeController::class, 'index'])->name('cafes.index');
-    Route::get('cafes/create', [CafeController::class, 'create'])->name('cafes.create');
-    Route::post('cafes', [CafeController::class, 'store'])->name('cafes.store');
+    Route::get('/dashboard', [CafeController::class, 'index'])->name('dashboard');//一覧画面 トップ画面を使わないのであえて一覧画面を表示
+    Route::get('cafes', [CafeController::class, 'index'])->name('cafes.index');//一覧画面
+    Route::get('cafes/create', [CafeController::class, 'create'])->name('cafes.create');//新規作成画面
+    Route::post('cafes', [CafeController::class, 'store'])->name('cafes.store');//作成処理
+    Route::get('cafes/{cafe}', [CafeController::class, 'show'])->name('cafes.show');//詳細画面
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
 });
 
 require __DIR__.'/auth.php';

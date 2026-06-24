@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 
 defineProps({cafes: Array,});
 
@@ -37,7 +37,7 @@ const formatTime = (t) => (t ? t.slice(0, 5) : '');
                     <div class="cafe-info">
                         <div class="cafe-info-top">
                             <div>
-                                <a href="#" class="cafe-name">{{ cafe.name }}</a>
+                                <Link :href="route('cafes.show',cafe.id)" class="cafe-name">{{ cafe.name }}</Link>
                                 <div class="cafe-category">{{ cafe.address }}</div>
                             </div>
                             <div class="cafe-rating-area">
@@ -64,9 +64,9 @@ const formatTime = (t) => (t ? t.slice(0, 5) : '');
                                     <span>{{ cafe.phone_number }}</span>
                                 </div>
                             </div>
-                            
+
                     </div>
-            
+
                 </article>
             </div>
         </div>

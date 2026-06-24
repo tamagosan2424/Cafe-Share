@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cafe;
 use Inertia\Inertia;
+use App\Http\Requests\PostRequest;
 
 class CafeController extends Controller
 {
@@ -14,9 +15,6 @@ class CafeController extends Controller
         ->withCount('reviews')
         ->get(); //データを取得。
         return Inertia::render('Cafe/Index', ['cafes' => $cafes]);
-
-        
-
     }
 
     public function create()
@@ -24,20 +22,16 @@ class CafeController extends Controller
         return Inertia::render('Cafe/Create');
     }
 
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $validated = $request->validate([
-            'name'          =>'required|string|max:255',
-            'address'       =>'required|string|max:255',
-            'phone_number'  =>'nullable|string|max:20',
-            'opening_at'    =>'nullable|date_format:H:i',
-            'closing_at'    =>'nullable|date_format:H:i',
-            'description'   =>'nullable|string'
-        ]);
-
+        $validated = $request->validated();
         $validated['user_id']=$request->user()->id;
         Cafe::create($validated); //配列をまとめて保存
         return redirect()->route('dashboard');
+    }
+
+    public function show(Cafe $cafe){
+        return Inertia::render('Cafe/Show', compact('cafe'));
     }
 }
 
