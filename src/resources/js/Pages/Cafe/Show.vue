@@ -16,6 +16,7 @@ defineProps({ cafe: { type: Object, required: true } });
         </template>
         <div class="show-container">
             <div class="show-detail-wrapper">
+                <Link :href="route('cafes.edit', cafe.id)" class="btn-edit">編集する</Link>
                 <div class="cafe-img-placeholder">
                     <img
                         v-if="cafe.image"

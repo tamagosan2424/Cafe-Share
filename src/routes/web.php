@@ -25,6 +25,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('cafes/create', [CafeController::class, 'create'])->name('cafes.create');//新規作成画面
     Route::post('cafes', [CafeController::class, 'store'])->name('cafes.store');//作成処理
     Route::get('cafes/{cafe}', [CafeController::class, 'show'])->name('cafes.show');//詳細画面
+    Route::get('cafes/{cafe}/edit', [CafeController::class, 'edit'])->name('cafes.edit');//編集画面
+    Route::patch('cafes/{cafe}',    [CafeController::class, 'update'])->name('cafes.update'); // 更新処理
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

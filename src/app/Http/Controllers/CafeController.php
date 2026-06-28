@@ -39,11 +39,29 @@ class CafeController extends Controller
 
     }
 
-
-
     public function show(Cafe $cafe){
         $cafe->loadAvg('reviews', 'rating')->loadCount('reviews');
         return Inertia::render('Cafe/Show', compact('cafe'));
     }
+
+    // 編集画面を表示（カフェのデータを渡す）
+    public function edit(Cafe $cafe)
+    {
+        return Inertia::render('Cafe/Edit', compact('cafe'));
+    }
+
+    // 更新処理
+    public function update(PostRequest $request, Cafe $cafe)
+    {
+        $validated = $request->validated();
+        if ($request->hasFile('image')) {
+            $path = Storage::disk('public')->put('cafe_image', $request->file('image'));
+            $validated['image'] = $path;
+        }
+        $cafe->update($validated);
+        return redirect()->route('cafes.show', $cafe);
+    }
+
 }
+
 
