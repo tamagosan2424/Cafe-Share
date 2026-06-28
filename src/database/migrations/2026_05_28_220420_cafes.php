@@ -20,10 +20,11 @@ return new class extends Migration
             $table->string('phone_number');
             $table->time('opening_at');
             $table->time('closing_at');
+            $table->string('image')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
-        
+
     }
 
     /**

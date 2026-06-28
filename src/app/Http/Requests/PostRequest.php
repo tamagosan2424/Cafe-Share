@@ -27,7 +27,8 @@ class PostRequest extends FormRequest
             'phone_number'  =>'nullable|string|max:20',
             'opening_at'    =>'nullable|date_format:H:i',
             'closing_at'    =>'nullable|date_format:H:i',
-            'description'   =>'nullable|string'
+            'description'   =>'nullable|string',
+            'image'         => 'nullable|image|max:2048', //(画像ファイル、2MB以内）
         ];
     }
 }
