@@ -29,11 +29,17 @@ const formatTime = (t) => (t ? t.slice(0, 5) : '');
 
                 <!-- 取得した一覧を表示 -->
                 <article v-for="cafe in cafes" :key="cafe.id" class="cafe-card">
-                    <a href="#" class="cafe-img-link">
+                    <Link :href="route('cafes.show', cafe.id)" class="cafe-img-link">
                         <div class="cafe-img-placeholder">
-                            <span class="cafe-img-icon">☕</span>
+                            <img
+                                v-if="cafe.image"
+                                :src="`/storage/${cafe.image}`"
+                                :alt="cafe.name"
+                                class="cafe-img"
+                            >
+                            <span v-else class="cafe-img-icon">☕</span>
                         </div>
-                    </a>
+                    </Link>
                     <div class="cafe-info">
                         <div class="cafe-info-top">
                             <div>

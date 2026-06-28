@@ -508,6 +508,7 @@ body {
 .time-sep { color: var(--cafe-share-gray); }
 .form-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 8px; }
 .btn-cancel {
+    align-self: flex-start;
     padding: 10px 24px;
     border: 1px solid var(--cafe-share-border);
     border-radius: 4px;
@@ -547,6 +548,8 @@ body {
     font-size: 26px;
     font-weight: bold;
     border-bottom: 2px solid red;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
 }
 .show-address {
     font-size: 13px;
@@ -574,3 +577,10 @@ dd {
 }
 
 .show-description-area h2 { font-size: 15px; font-weight: bold; margin-bottom: 8px; }
+
+/* カフェ画像 */
+.cafe-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* 縦横比を保ちながらはみ出した部分をトリミング */
+}

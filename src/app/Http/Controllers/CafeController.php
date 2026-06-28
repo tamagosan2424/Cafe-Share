@@ -42,6 +42,7 @@ class CafeController extends Controller
 
 
     public function show(Cafe $cafe){
+        $cafe->loadAvg('reviews', 'rating')->loadCount('reviews');
         return Inertia::render('Cafe/Show', compact('cafe'));
     }
 }
