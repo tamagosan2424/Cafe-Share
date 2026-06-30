@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import { Head, Link, useForm, router } from '@inertiajs/vue3';
 
 // コントローラーからカフェデータを受け取る
 const props = defineProps({ cafe: { type: Object, required: true } });
@@ -22,6 +22,12 @@ const submit = () => {
         ...data,
         _method: 'PATCH',
     })).post(route('cafes.update', props.cafe.id));
+};
+
+const destroy = () => {
+    if (confirm('本当に削除しますか？')) {
+        router.delete(route('cafe.destroy', props.cafe.id));
+    }
 };
 
 const sanitizePhone = () => {
@@ -89,6 +95,9 @@ const sanitizePhone = () => {
                     <Link :href="route('cafes.index')" class="btn-cancel">キャンセル</Link>
                     <button type="submit" class="btn-submit" :disabled="form.processing">
                         更新する
+                    </button>
+                    <button type="button" @click="destroy" class="btn-delete">
+                        削除する
                     </button>
                 </div>
             </form>

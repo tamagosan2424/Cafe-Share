@@ -528,6 +528,16 @@ body {
     border-radius: 4px;
     cursor: pointer;
 }
+.btn-image {
+    align-self: flex-start;
+    padding: 10px 24px;
+    border: 1px solid var(--cafe-share-border);
+    border-radius: 4px;
+    font-size: 14px;
+    color: var(--cafe-share-gray);
+    text-decoration: none;
+    background: #fff;
+}
 .btn-submit:hover { background-color: var(--cafe-share-red-dark); }
 .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
 

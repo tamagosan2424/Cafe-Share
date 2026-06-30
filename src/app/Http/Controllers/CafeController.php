@@ -62,6 +62,12 @@ class CafeController extends Controller
         return redirect()->route('cafes.show', $cafe);
     }
 
+    // 削除処理
+    public function destroy(Request $req, Cafe $cafe){
+    // 保存
+    $cafe->delete();
+    return redirect()->route('dashboard');
+    }
 }
 
 
