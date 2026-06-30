@@ -96,11 +96,25 @@ const sanitizePhone = () => {
                     <button type="submit" class="btn-submit" :disabled="form.processing">
                         更新する
                     </button>
+                </div>
+            </form>
+
+            <!-- 危険な操作ゾーン -->
+            <div class="danger-zone">
+                <div class="danger-zone-header">
+                    <span class="danger-zone-icon">⚠️</span>
+                    <span class="danger-zone-title">危険な操作</span>
+                </div>
+                <div class="danger-zone-body">
+                    <div class="danger-zone-description">
+                        <p class="danger-zone-label">このカフェを削除する</p>
+                        <p class="danger-zone-note">削除すると元に戻すことはできません。</p>
+                    </div>
                     <button type="button" @click="destroy" class="btn-delete">
                         削除する
                     </button>
                 </div>
-            </form>
+            </div>
         </div>
     </AuthenticatedLayout>
 </template>

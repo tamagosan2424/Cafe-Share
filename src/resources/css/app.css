@@ -541,6 +541,69 @@ body {
 .btn-submit:hover { background-color: var(--cafe-share-red-dark); }
 .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
 
+/* ---------- 危険な操作ゾーン ---------- */
+.danger-zone {
+    margin-top: 32px;
+    border: 1px solid #f5c6cb;
+    border-radius: 6px;
+    overflow: hidden;
+}
+.danger-zone-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff5f5;
+    padding: 10px 16px;
+    border-bottom: 1px solid #f5c6cb;
+}
+.danger-zone-icon {
+    font-size: 15px;
+}
+.danger-zone-title {
+    font-size: 13px;
+    font-weight: bold;
+    color: #b91c1c;
+}
+.danger-zone-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    gap: 16px;
+    background: #fff;
+}
+.danger-zone-description {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.danger-zone-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--cafe-share-text);
+}
+.danger-zone-note {
+    font-size: 12px;
+    color: var(--cafe-share-gray);
+}
+.btn-delete {
+    flex-shrink: 0;
+    padding: 9px 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #b91c1c;
+    background: #fff5f5;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+.btn-delete:hover {
+    background: #b91c1c;
+    border-color: #b91c1c;
+    color: #fff;
+}
+
 /* ---------- 詳細画面 ---------- */
 .show-detail-wrapper {
     display: flex;
