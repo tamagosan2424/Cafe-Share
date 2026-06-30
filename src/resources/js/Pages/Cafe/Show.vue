@@ -1,8 +1,20 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, Link } from '@inertiajs/vue3';
+import { Head, Link, useForm } from '@inertiajs/vue3';
 
-defineProps({ cafe: { type: Object, required: true } });
+const props = defineProps({ cafe: { type: Object, required: true } }); // propsに変更
+
+// レビュー投稿フォーム
+const form = useForm({
+    rating: '',
+    comment: '',
+});
+
+const submitReview = () => {
+    form.post(route('reviews.store', props.cafe.id), {
+        onSuccess: () => form.reset(), // 投稿成功後にフォームをリセット
+    });
+};
 </script>
 
 <template>
@@ -45,6 +57,37 @@ defineProps({ cafe: { type: Object, required: true } });
                 <div class="show-description-area">
                     <h2>カフェ紹介</h2>
                     <p>{{ cafe.description }}</p>
+                </div>
+                <!-- レビュー一覧 -->
+                <div class="review-list-area">
+                    <h2>レビュー一覧（{{ cafe.reviews_count }}件）</h2>
+                    <p v-if="cafe.reviews.length === 0">まだレビューがありません</p>
+                    <div v-for="review in cafe.reviews" :key="review.id" class="review-item">
+                        <div class="review-item-header">
+                            <span class="review-rating">★{{ review.rating }}</span>
+                            <span class="review-user">{{ review.user.name }}</span>
+                        </div>
+                        <p class="review-comment">{{ review.comment }}</p>
+                    </div>
+                </div>
+                <!-- レビュー投稿フォーム -->
+                <div class="review-form-area">
+                    <h2>レビューを投稿する</h2>
+                    <form @submit.prevent="submitReview">
+                        <div>
+                            <label>評価（1〜5）</label>
+                            <select v-model="form.rating">
+                                <option value="">選択してください</option>
+                                <option v-for="n in 5" :key="n" :value="n">★{{ n }}</option>
+                            </select>
+                            <p v-if="form.errors.rating" class="form-error">{{ form.errors.rating }}</p>
+                        </div>
+                        <div>
+                            <label>コメント</label>
+                            <textarea v-model="form.comment" placeholder="感想を書いてください" rows="3"></textarea>
+                        </div>
+                        <button type="submit" :disabled="form.processing">投稿する</button>
+                    </form>
                 </div>
                 <Link :href="route('cafes.index')" class="btn-cancel">一覧に戻る</Link>
             </div>

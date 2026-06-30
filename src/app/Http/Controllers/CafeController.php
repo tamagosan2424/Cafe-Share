@@ -26,6 +26,7 @@ class CafeController extends Controller
     public function store(PostRequest $request)
     {
         $validated = $request->validated();
+        //バリデーションしたデータにユーザIDを付与
         $validated['user_id']=$request->user()->id;
         $image = $request->file('image');
         //画像が送信されてきていたら保存処理
@@ -40,7 +41,9 @@ class CafeController extends Controller
     }
 
     public function show(Cafe $cafe){
-        $cafe->loadAvg('reviews', 'rating')->loadCount('reviews');
+    $cafe->load('reviews.user')  // ←レビュー+投稿者名
+         ->loadAvg('reviews', 'rating')
+         ->loadCount('reviews');
         return Inertia::render('Cafe/Show', compact('cafe'));
     }
 
