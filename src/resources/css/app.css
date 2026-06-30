@@ -121,7 +121,35 @@ body {
 .search-btn:hover {
     background-color: #cc9100;
 }
+/* ---------- 編集ボタン ---------- */
+.btn-edit {
+    display: inline-flex;
+    margin-left:auto;
+    gap: 6px;
+    align-self: flex-start;
+    padding: 9px 20px;
+    border: 1.5px solid var(--cafe-share-link);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--cafe-share-link);
+    text-decoration: none;
+    background: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
 
+.btn-edit:hover {
+    background-color: var(--cafe-share-link);
+    border-color: var(--cafe-share-link);
+    color: #fff;
+    box-shadow: 0 3px 8px rgba(29,111,164,0.25);
+}
+.btn-edit:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
 /* ---------- メインコンテナ ---------- */
 .main-container {
     max-width: 1000px;
