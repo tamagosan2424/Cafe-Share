@@ -21,6 +21,7 @@ class CafesSeeder extends Seeder
                 'phone_number' => '03-1234-5678',
                 'opening_at'   => '09:00:00',
                 'closing_at'   => '20:00:00',
+                'image'        => '/storage/cafe_image/4jUo0vqjfaipbNDOp57MaykjD8rn0FwKMTdOE50e.webp',
                 'created_at'   => now(),
                 'updated_at'   => now(),
             ],
@@ -32,6 +33,7 @@ class CafesSeeder extends Seeder
                 'phone_number' => '03-9876-5432',
                 'opening_at'   => '10:00:00',
                 'closing_at'   => '21:00:00',
+                'image'        => null,
                 'created_at'   => now(),
                 'updated_at'   => now(),
             ],
@@ -43,9 +45,10 @@ class CafesSeeder extends Seeder
                 'phone_number' => '03-9876-5432',
                 'opening_at'   => '8:00:00',
                 'closing_at'   => '9:00:00',
+                'image'        => null,
                 'created_at'   => now(),
                 'updated_at'   => now(),
-            ],            
+            ],
         ]);
     }
 }

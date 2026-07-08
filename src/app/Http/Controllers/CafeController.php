@@ -12,7 +12,8 @@ class CafeController extends Controller
 {
     public function index()
     {
-        $cafes = Cafe::withAvg('reviews', 'rating')
+        $cafes = Cafe::with('cafeImages')
+        ->withAvg('reviews', 'rating')
         ->withCount('reviews')
         ->get(); //データを取得。
         return Inertia::render('Cafe/Index', ['cafes' => $cafes]);
@@ -33,7 +34,7 @@ class CafeController extends Controller
         if($image){
             // 画像を保存してパスを取得
             $path = Storage::disk('public')->put('cafe_image', $image);
-            $validated['image'] = $path;
+            $validated['image'] = "/storage/".$path;
         }
         Cafe::create($validated); //配列をまとめて保存
         return redirect()->route('dashboard');
@@ -41,16 +42,19 @@ class CafeController extends Controller
     }
 
     public function show(Cafe $cafe){
-    $cafe->load('reviews.user')  // ←レビュー+投稿者名
-         ->loadAvg('reviews', 'rating')
-         ->loadCount('reviews');
-        return Inertia::render('Cafe/Show', compact('cafe'));
+        $cafe->load('reviews.user')  // ←レビュー+投稿者名
+            ->loadAvg('reviews', 'rating')
+            ->loadCount('reviews');
+        $canEdit   = auth()->user()->can('update', $cafe);
+        return Inertia::render('Cafe/Show', compact('cafe', 'canEdit'));
     }
 
     // 編集画面を表示（カフェのデータを渡す）
     public function edit(Cafe $cafe)
     {
-        return Inertia::render('Cafe/Edit', compact('cafe'));
+        $this->authorize('update', $cafe);
+        $canDelete = auth()->user()->can('delete', $cafe);
+        return Inertia::render('Cafe/Edit', compact('cafe', 'canDelete'));
     }
 
     // 更新処理
@@ -58,8 +62,12 @@ class CafeController extends Controller
     {
         $validated = $request->validated();
         if ($request->hasFile('image')) {
+            // 新しい画像がある場合のみ保存・上書き
             $path = Storage::disk('public')->put('cafe_image', $request->file('image'));
-            $validated['image'] = $path;
+            $validated['image'] = "/storage/".$path;
+        } else {
+            // 画像がない場合は $validated から image を除外（既存画像を保持）
+            unset($validated['image']);
         }
         $cafe->update($validated);
         return redirect()->route('cafes.show', $cafe);
@@ -68,6 +76,7 @@ class CafeController extends Controller
     // 削除処理
     public function destroy(Request $req, Cafe $cafe){
     // 保存
+    $this->authorize('delete', $cafe);
     $cafe->delete();
     return redirect()->route('dashboard');
     }

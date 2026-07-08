@@ -1,9 +1,13 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, useForm, router } from '@inertiajs/vue3';
+import { ref } from 'vue';
 
 // コントローラーからカフェデータを受け取る
-const props = defineProps({ cafe: { type: Object, required: true } });
+const props = defineProps({
+    cafe: { type: Object, required: true },
+    canDelete: { type: Boolean, default: false },
+});
 
 // 初期値を既存データに
 const form = useForm({
@@ -32,6 +36,18 @@ const destroy = () => {
 
 const sanitizePhone = () => {
     form.phone_number = form.phone_number.replace(/[^0-9\-]/g, '');
+};
+
+// 画像プレビュー用（初期値は既存画像のパス）
+const previewUrl = ref(props.cafe.image ?? null);
+
+// ファイル選択時の処理
+const onImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        form.image = file;
+        previewUrl.value = URL.createObjectURL(file);  // 新画像をプレビュー
+    }
 };
 </script>
 
@@ -88,7 +104,11 @@ const sanitizePhone = () => {
                 <!-- 画像送信 -->
                 <div class="form-group">
                     <label class="form-label">画像</label>
-                    <input type="file" accept="image/*" @change="form.image = $event.target.files[0]">
+        <!-- 既存or新しい画像のプレビュー -->
+                    <div v-if="previewUrl">
+                        <img :src="previewUrl" alt="カフェ画像" style="max-width: 300px; margin-bottom: 8px;" />
+                    </div>
+                    <input type="file" accept="image/*" @change="onImageChange">
                 </div>
                 <!-- 送信ボタン -->
                 <div class="form-actions">
@@ -110,7 +130,7 @@ const sanitizePhone = () => {
                         <p class="danger-zone-label">このカフェを削除する</p>
                         <p class="danger-zone-note">削除すると元に戻すことはできません。</p>
                     </div>
-                    <button type="button" @click="destroy" class="btn-delete">
+                    <button v-if="canDelete" type="button" @click="destroy" class="btn-delete">
                         削除する
                     </button>
                 </div>

@@ -15,4 +15,8 @@ class Cafe extends Model
         'phone_number', 'opening_at', 'closing_at',
         'image',
     ];
+
+    public function cafeImages() {
+    return $this->hasMany(CafeImage::class);
+    }
 }

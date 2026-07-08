@@ -2,7 +2,10 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
-const props = defineProps({ cafe: { type: Object, required: true } }); // propsに変更
+const props = defineProps({
+    cafe: { type: Object, required: true },
+    canEdit:   { type: Boolean, default: false },
+});
 
 // レビュー投稿フォーム
 const form = useForm({
@@ -28,11 +31,13 @@ const submitReview = () => {
         </template>
         <div class="show-container">
             <div class="show-detail-wrapper">
-                <Link :href="route('cafes.edit', cafe.id)" class="btn-edit">編集する</Link>
+                <Link v-if="canEdit" :href="route('cafes.edit', cafe.id)" class="btn-edit">
+                    編集する
+                </Link>
                 <div class="cafe-img-placeholder">
                     <img
                         v-if="cafe.image"
-                        :src="`/storage/${cafe.image}`"
+                        :src="`${cafe.image}`"
                         :alt="cafe.name"
                         class="cafe-img"
                     >

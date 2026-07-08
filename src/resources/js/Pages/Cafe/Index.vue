@@ -33,7 +33,7 @@ const formatTime = (t) => (t ? t.slice(0, 5) : '');
                         <div class="cafe-img-placeholder">
                             <img
                                 v-if="cafe.image"
-                                :src="`/storage/${cafe.image}`"
+                                :src="`${cafe.image}`"
                                 :alt="cafe.name"
                                 class="cafe-img"
                             >
