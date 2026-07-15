@@ -285,7 +285,57 @@ body {
     flex-shrink: 0;
     display: block;
     text-decoration: none;
+    width: 160px;
 }
+.cafe-img-link:hover .cafe-main-image,
+.cafe-img-link:hover .cafe-img-placeholder {
+    opacity: 0.85;
+}
+
+/* メイン画像（上段） */
+.cafe-main-image {
+    width: 160px;
+    height: 160px; /* デフォルト：サブ画像なしの場合は160px */
+    background: linear-gradient(135deg, #f9e4d4 0%, #f0c8a8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: opacity 0.2s;
+}
+.cafe-main-image--solo {
+    height: 160px; /* サブ画像なし：全体を160pxで表示 */
+}
+.cafe-main-image--with-sub {
+    height: 110px; /* サブ画像あり：上段110px＋下段50px＝160px */
+}
+.cafe-main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cafe-main-image span {
+    font-size: 40px;
+    opacity: 0.6;
+}
+
+/* サブ画像（下段、最大3枚横並び） */
+.cafe-sub-images {
+    width: 160px;
+    height: 50px;
+    display: flex;
+    gap: 2px;
+    background: #e8e8e8;
+    overflow: hidden;
+}
+.cafe-sub-images img {
+    flex: 1;
+    width: 0;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 旧クラス（後方互換） */
 .cafe-img-placeholder {
     width: 160px;
     height: 160px;
@@ -297,9 +347,6 @@ body {
 }
 .cafe-img-placeholder--blue {
     background: linear-gradient(135deg, #d4e8f9 0%, #a8cef0 100%);
-}
-.cafe-img-link:hover .cafe-img-placeholder {
-    opacity: 0.85;
 }
 .cafe-img-icon {
     font-size: 48px;
@@ -802,4 +849,164 @@ dd {
 .review-form-area button[type="submit"]:disabled {
     opacity: 0.6;
     cursor: not-allowed;
+}
+
+/* ---------- メニュー一覧 ---------- */
+.menu-list-area {
+    margin-top: 32px;
+    border-top: 2px solid var(--cafe-share-red);
+    padding-top: 16px;
+}
+.menu-list-area h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 12px;
+}
+.menu-card {
+    background: #fafaf8;
+    border: 1px solid var(--cafe-share-border);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s;
+}
+.menu-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.menu-img-wrap {
+    width: 100%;
+    height: 140px;
+    background: linear-gradient(135deg, #f9e4d4 0%, #f0c8a8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.menu-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.menu-img-placeholder {
+    font-size: 40px;
+    opacity: 0.6;
+}
+.menu-info {
+    padding: 10px 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.menu-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--cafe-share-text);
+    margin: 0;
+}
+.menu-price {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--cafe-share-red);
+    margin: 0;
+}
+.menu-description {
+    font-size: 12px;
+    color: var(--cafe-share-gray);
+    line-height: 1.5;
+    margin: 0;
+}
+.menu-delete-btn {
+    margin: 0 12px 10px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #b91c1c;
+    background: #fff5f5;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+.menu-delete-btn:hover {
+    background: #b91c1c;
+    border-color: #b91c1c;
+    color: #fff;
+}
+
+/* ---------- メニュー投稿フォーム ---------- */
+.menu-form-area {
+    margin-top: 32px;
+    background: #fafaf8;
+    border: 1px solid var(--cafe-share-border);
+    border-radius: 8px;
+    padding: 20px 24px;
+}
+.menu-form-area h2 {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--cafe-share-border);
+}
+.menu-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.menu-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.menu-form-label {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--cafe-share-text);
+}
+.menu-form-input {
+    border: 1px solid var(--cafe-share-border);
+    border-radius: 4px;
+    padding: 9px 12px;
+    font-size: 14px;
+    outline: none;
+    background: #fff;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+    width: 100%;
+}
+.menu-form-input:focus {
+    border-color: var(--cafe-share-gray);
+    box-shadow: 0 0 0 2px rgba(201,23,30,0.1);
+}
+.menu-form-textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+.menu-preview-wrap {
+    margin-bottom: 8px;
+}
+.menu-preview-img {
+    max-width: 200px;
+    max-height: 150px;
+    border-radius: 6px;
+    border: 1px solid var(--cafe-share-border);
+    object-fit: cover;
+}
+.menu-file-input {
+    font-size: 13px;
+    color: var(--cafe-share-text);
+}
+.menu-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
 }

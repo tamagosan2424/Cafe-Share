@@ -9,7 +9,7 @@ const form = useForm({
     opening_at: '',
     closing_at: '',
     description: '',
-    image: null,  // ファイルはnullで初期化
+    image: null,  // メイン画像（1枚）
 });
 
 // フォームをPOST送信してカフェを新規作成する
@@ -73,9 +73,9 @@ const sanitizePhone = () => {
                     <label class="form-label">カフェ紹介文</label>
                     <textarea v-model="form.description" class="form-input form-textarea" placeholder="カフェの雰囲気や特徴を入力してください" rows="4"></textarea>
                 </div>
-                <!-- 画像送信 -->
+                <!-- メイン画像（1枚） -->
                 <div class="form-group">
-                    <label class="form-label">画像</label>
+                    <label class="form-label">メイン画像</label>
                     <input type="file" accept="image/*" @change="form.image = $event.target.files[0]">
                 </div>
                 <!-- 送信ボタン -->

@@ -28,7 +28,9 @@ class PostRequest extends FormRequest
             'opening_at'    =>'nullable|date_format:H:i',
             'closing_at'    =>'nullable|date_format:H:i',
             'description'   =>'nullable|string',
-            'image'         => 'nullable|image|max:2048', //(画像ファイル、2MB以内）
+            'image'         => 'nullable|image|max:2048',  // メイン画像（1枚、2MB以内）
+            'sub_images'    => 'nullable|array',           // サブ画像（配列）
+            'sub_images.*'  => 'nullable|image|max:2048',  // 各サブ画像ファイル、2MB以内
         ];
     }
 }

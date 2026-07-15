@@ -27,22 +27,24 @@ class CafeController extends Controller
     public function store(PostRequest $request)
     {
         $validated = $request->validated();
-        //バリデーションしたデータにユーザIDを付与
-        $validated['user_id']=$request->user()->id;
-        $image = $request->file('image');
-        //画像が送信されてきていたら保存処理
-        if($image){
-            // 画像を保存してパスを取得
-            $path = Storage::disk('public')->put('cafe_image', $image);
-            $validated['image'] = "/storage/".$path;
-        }
-        Cafe::create($validated); //配列をまとめて保存
-        return redirect()->route('dashboard');
+        // バリデーションしたデータにユーザIDを付与
+        $validated['user_id'] = $request->user()->id;
 
+        // メイン画像（1枚）を保存
+        if ($request->hasFile('image')) {
+            $path = Storage::disk('public')->put('cafe_image', $request->file('image'));
+            $validated['image'] = '/storage/' . $path;
+        }
+
+        // sub_images はcafesテーブルにないので除外してからcreate
+        unset($validated['sub_images']);
+        $cafe = Cafe::create($validated);
+
+        return redirect()->route('dashboard');
     }
 
     public function show(Cafe $cafe){
-        $cafe->load('reviews.user')  // ←レビュー+投稿者名
+        $cafe->load('reviews.user', 'menus')  // ←レビュー+投稿者名、メニュー
             ->loadAvg('reviews', 'rating')
             ->loadCount('reviews');
         $canEdit   = auth()->user()->can('update', $cafe);
@@ -61,15 +63,27 @@ class CafeController extends Controller
     public function update(PostRequest $request, Cafe $cafe)
     {
         $validated = $request->validated();
+
+        // メイン画像の更新（選択された場合のみ上書き、なければ既存を保持）
         if ($request->hasFile('image')) {
-            // 新しい画像がある場合のみ保存・上書き
             $path = Storage::disk('public')->put('cafe_image', $request->file('image'));
-            $validated['image'] = "/storage/".$path;
+            $validated['image'] = '/storage/' . $path;
         } else {
-            // 画像がない場合は $validated から image を除外（既存画像を保持）
             unset($validated['image']);
         }
+
+        // sub_images はcafesテーブルにないので除外してからupdate
+        unset($validated['sub_images']);
         $cafe->update($validated);
+
+        // サブ画像を追加（cafe_images テーブルに保存）
+        if ($request->hasFile('sub_images')) {
+            foreach ($request->file('sub_images') as $subImage) {
+                $path = Storage::disk('public')->put('cafe_image', $subImage);
+                $cafe->cafeImages()->create(['image' => '/storage/' . $path]);
+            }
+        }
+
         return redirect()->route('cafes.show', $cafe);
     }
 

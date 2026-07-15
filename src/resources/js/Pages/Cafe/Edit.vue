@@ -17,7 +17,8 @@ const form = useForm({
     opening_at:   props.cafe.opening_at ? props.cafe.opening_at.slice(0, 5) : '',
     closing_at:   props.cafe.closing_at ? props.cafe.closing_at.slice(0, 5) : '',
     description:  props.cafe.description ?? '',
-    image: null,
+    image:        null,        // メイン画像（変更する場合のみ）
+    sub_images:   [],          // サブ画像（追加する場合）
 });
 
 //バリデーションが誤作動するのでmethod スプーフィングする
@@ -38,16 +39,21 @@ const sanitizePhone = () => {
     form.phone_number = form.phone_number.replace(/[^0-9\-]/g, '');
 };
 
-// 画像プレビュー用（初期値は既存画像のパス）
+// メイン画像プレビュー用（初期値は既存画像のパス）
 const previewUrl = ref(props.cafe.image ?? null);
 
-// ファイル選択時の処理
+// メイン画像変更時の処理
 const onImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
         form.image = file;
-        previewUrl.value = URL.createObjectURL(file);  // 新画像をプレビュー
+        previewUrl.value = URL.createObjectURL(file);  // プレビュー更新
     }
+};
+
+// サブ画像追加時の処理
+const onSubImagesChange = (e) => {
+    form.sub_images = Array.from(e.target.files);
 };
 </script>
 
@@ -101,14 +107,21 @@ const onImageChange = (e) => {
                     <label class="form-label">カフェ紹介文</label>
                     <textarea v-model="form.description" class="form-input form-textarea" placeholder="カフェの雰囲気や特徴を入力してください" rows="4"></textarea>
                 </div>
-                <!-- 画像送信 -->
+                <!-- メイン画像（変更する場合のみ選択） -->
                 <div class="form-group">
-                    <label class="form-label">画像</label>
-        <!-- 既存or新しい画像のプレビュー -->
+                    <label class="form-label">メイン画像</label>
+                    <!-- 現在のメイン画像プレビュー -->
                     <div v-if="previewUrl">
                         <img :src="previewUrl" alt="カフェ画像" style="max-width: 300px; margin-bottom: 8px;" />
                     </div>
                     <input type="file" accept="image/*" @change="onImageChange">
+                    <p style="font-size:12px; color:#888; margin-top:4px;">選択しない場合は現在の画像を維持します</p>
+                </div>
+                <!-- サブ画像を追加（複数選択可） -->
+                <div class="form-group">
+                    <label class="form-label">サブ画像を追加</label>
+                    <input type="file" accept="image/*" multiple @change="onSubImagesChange">
+                    <p style="font-size:12px; color:#888; margin-top:4px;">複数選択可・追加のみ（削除は別途対応）</p>
                 </div>
                 <!-- 送信ボタン -->
                 <div class="form-actions">
