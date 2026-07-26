@@ -7,6 +7,7 @@ use App\Models\Cafe;
 use Inertia\Inertia;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
 
 class CafeController extends Controller
 {
@@ -94,6 +95,31 @@ class CafeController extends Controller
     $cafe->delete();
     return redirect()->route('dashboard');
     }
+
+    public function fetchGooglePhotos(Request $request)
+{
+    $query = $request->query('q'); // "スタバ 渋谷"など
+    $apiKey = env('GOOGLE_MAPS_API_KEY');
+
+    // Place Search
+    $searchRes = Http::get("https://maps.googleapis.com/maps/api/place/findplacefromtext/json", [
+        'input'     => $query,
+        'inputtype' => 'textquery',
+        'fields'    => 'place_id,photos',
+        'key'       => $apiKey,
+    ])->json();
+
+    $photos = $searchRes['candidates'][0]['photos'] ?? [];
+    $photoUrls = [];
+
+    foreach (array_slice($photos, 0, 3) as $photo) {
+        $ref = $photo['photo_reference'];
+        $photoUrls[] = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={$ref}&key={$apiKey}";
+    }
+
+    return response()->json($photoUrls);
+}
+
 }
 
 

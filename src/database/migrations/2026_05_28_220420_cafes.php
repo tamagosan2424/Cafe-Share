@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('address');
-            $table->string('phone_number');
-            $table->time('opening_at');
-            $table->time('closing_at');
+            $table->string('phone_number')->nullable();
+            $table->time('opening_at')->nullable();
+            $table->time('closing_at')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
             $table->softDeletes();

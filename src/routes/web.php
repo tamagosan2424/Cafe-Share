@@ -36,6 +36,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('cafes/{cafe}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
     Route::post('cafes/{cafe}/menus', [MenuController::class, 'store'])->name('menus.store');           // メニュー追加
     Route::delete('cafes/{cafe}/menus/{menu}', [MenuController::class, 'destroy'])->name('menus.destroy'); // メニュー削除
+    Route::get('/api/cafe-photos', [CafeController::class, 'fetchGooglePhotos']);
 });
 
 require __DIR__.'/auth.php';
