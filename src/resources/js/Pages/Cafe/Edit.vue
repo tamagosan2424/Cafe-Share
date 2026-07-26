@@ -79,7 +79,7 @@ const onSubImagesChange = (e) => {
                     <input v-model="form.name" type="text" class="form-input" placeholder="例：○○珈琲 渋谷店" />
                     <p v-if="form.errors.name" class="form-error">{{ form.errors.name }}</p>
                 </div>
-                 <!-- 住所 -->
+                <!-- 住所 -->
                 <div class="form-group">
                     <label class="form-label">住所<span class="required">*</span></label>
                     <input v-model="form.address" type="text" class="form-input" placeholder="例:東京都 渋谷区1-1-1">
@@ -89,9 +89,9 @@ const onSubImagesChange = (e) => {
                 <div class="form-group">
                     <label class="form-label">電話番号</label>
                     <input v-model="form.phone_number" type="text" class="form-input"
-                    placeholder="例:123-4567"
-                    @input="sanitizePhone"
-                    @compositionend="sanitizePhone">
+                        placeholder="例:123-4567"
+                        @input="sanitizePhone"
+                        @compositionend="sanitizePhone">
                 </div>
                 <!-- 営業時間 -->
                 <div class="form-group">

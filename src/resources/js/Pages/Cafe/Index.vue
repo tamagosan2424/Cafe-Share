@@ -58,21 +58,21 @@ const formatTime = (t) => (t ? t.slice(0, 5) : '');
                                 <div class="cafe-review-count">レビュー <strong>{{ cafe.reviews_count }}</strong> 件</div>
                             </div>
                         </div>
-                            <p class="cafe-description">{{ cafe.description }}</p>
-                            <div class="cafe-details">
-                                <div class="cafe-detail-item">
-                                    <span class="detail-icon">📍</span>
-                                    <span>{{ cafe.address }}</span>
-                                </div>
-                                <div class="cafe-detail-item">
-                                    <span class="detail-icon">🕐</span>
-                                    <span>{{ formatTime(cafe.opening_at) }}〜{{ formatTime(cafe.closing_at) }}</span>
-                                </div>
-                                <div class="cafe-detail-item">
-                                    <span class="detail-icon">📞</span>
-                                    <span>{{ cafe.phone_number }}</span>
-                                </div>
+                        <p class="cafe-description">{{ cafe.description }}</p>
+                        <div class="cafe-details">
+                            <div class="cafe-detail-item">
+                                <span class="detail-icon">📍</span>
+                                <span>{{ cafe.address }}</span>
                             </div>
+                            <div class="cafe-detail-item">
+                                <span class="detail-icon">🕐</span>
+                                <span>{{ formatTime(cafe.opening_at) }}〜{{ formatTime(cafe.closing_at) }}</span>
+                            </div>
+                            <div class="cafe-detail-item">
+                                <span class="detail-icon">📞</span>
+                                <span>{{ cafe.phone_number }}</span>
+                            </div>
+                        </div>
 
                     </div>
 

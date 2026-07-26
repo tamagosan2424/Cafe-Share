@@ -66,61 +66,6 @@ body {
     text-decoration: underline;
 }
 
-/* ---------- 検索バー ---------- */
-.search-bar-area {
-    background-color: #a50f15;
-    padding: 12px 0;
-}
-.search-bar-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 16px;
-}
-.search-bar {
-    display: flex;
-    gap: 6px;
-    align-items: stretch;
-}
-.search-input-wrap {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    background: #fff;
-    border-radius: 4px;
-    padding: 0 10px;
-    gap: 6px;
-}
-.search-icon {
-    font-size: 15px;
-    line-height: 1;
-}
-.search-input {
-    flex: 1;
-    border: none;
-    outline: none;
-    font-size: 13px;
-    padding: 8px 0;
-    background: transparent;
-    color: var(--cafe-share-text);
-}
-.search-input::placeholder {
-    color: #bbb;
-}
-.search-btn {
-    background-color: #e8a400;
-    color: #fff;
-    font-weight: bold;
-    font-size: 14px;
-    border: none;
-    border-radius: 4px;
-    padding: 0 22px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background-color 0.2s;
-}
-.search-btn:hover {
-    background-color: #cc9100;
-}
 /* ---------- 編集ボタン ---------- */
 .btn-edit {
     display: inline-flex;
@@ -155,108 +100,6 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     padding: 16px 16px 40px;
-}
-
-/* ---------- パンくず ---------- */
-.breadcrumb {
-    font-size: 12px;
-    color: var(--cafe-share-gray);
-    margin-bottom: 12px;
-}
-.breadcrumb a {
-    color: var(--cafe-share-link);
-    text-decoration: none;
-}
-.breadcrumb a:hover {
-    text-decoration: underline;
-}
-.breadcrumb-sep {
-    margin: 0 6px;
-    color: #bbb;
-}
-
-/* ---------- 結果ヘッダー ---------- */
-.result-header {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    margin-bottom: 14px;
-    border-bottom: 2px solid var(--cafe-share-red);
-    padding-bottom: 10px;
-}
-.result-title {
-    font-size: 20px;
-    font-weight: bold;
-    color: var(--cafe-share-text);
-}
-.result-count {
-    font-size: 13px;
-    color: var(--cafe-share-gray);
-}
-.result-count strong {
-    color: var(--cafe-share-red);
-    font-size: 16px;
-}
-
-/* ---------- フィルタータグ ---------- */
-.filter-tags {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
-    background: #fff;
-    border: 1px solid var(--cafe-share-border);
-    border-radius: 6px;
-    padding: 10px 14px;
-}
-.filter-label {
-    font-size: 12px;
-    color: var(--cafe-share-gray);
-    white-space: nowrap;
-}
-.filter-tag {
-    display: inline-block;
-    font-size: 12px;
-    color: var(--cafe-share-gray);
-    background: #f0f0f0;
-    border: 1px solid #d8d8d8;
-    border-radius: 3px;
-    padding: 3px 10px;
-    text-decoration: none;
-    transition: all 0.15s;
-}
-.filter-tag:hover,
-.filter-tag.active {
-    background-color: var(--cafe-share-red);
-    border-color: var(--cafe-share-red);
-    color: #fff;
-}
-
-/* ---------- ソートバー ---------- */
-.sort-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 14px;
-    font-size: 12px;
-    color: var(--cafe-share-gray);
-}
-.sort-link {
-    color: var(--cafe-share-link);
-    text-decoration: none;
-}
-.sort-link:hover {
-    text-decoration: underline;
-}
-.sort-link.active {
-    color: var(--cafe-share-red);
-    font-weight: bold;
-    text-decoration: none;
-    pointer-events: none;
-}
-.sort-sep {
-    color: #ccc;
 }
 
 /* ---------- カフェカードリスト ---------- */
@@ -335,7 +178,7 @@ body {
     object-fit: cover;
 }
 
-/* 旧クラス（後方互換） */
+/* 詳細画面の画像エリア */
 .cafe-img-placeholder {
     width: 160px;
     height: 160px;
@@ -344,9 +187,6 @@ body {
     align-items: center;
     justify-content: center;
     transition: opacity 0.2s;
-}
-.cafe-img-placeholder--blue {
-    background: linear-gradient(135deg, #d4e8f9 0%, #a8cef0 100%);
 }
 .cafe-img-icon {
     font-size: 48px;
@@ -477,23 +317,6 @@ body {
     line-height: 1;
 }
 
-/* ---------- カフェタグ ---------- */
-.cafe-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 4px;
-}
-.cafe-tag {
-    display: inline-block;
-    font-size: 11px;
-    color: #1d6fa4;
-    background: #eaf4fb;
-    border: 1px solid #c0ddef;
-    border-radius: 3px;
-    padding: 2px 8px;
-}
-
 /* ---------- フッター ---------- */
 .site-footer {
     background: #333;
@@ -518,18 +341,8 @@ body {
 
 /* ---------- レスポンシブ ---------- */
 @media (max-width: 640px) {
-    .search-bar {
-        flex-direction: column;
-    }
-    .search-btn {
-        padding: 10px;
-    }
     .cafe-card {
         flex-direction: column;
-    }
-    .cafe-img-placeholder {
-        width: 100%;
-        height: 140px;
     }
     .cafe-info-top {
         flex-direction: column;
@@ -539,9 +352,6 @@ body {
         display: flex;
         align-items: center;
         gap: 8px;
-    }
-    .filter-tags {
-        gap: 6px;
     }
 }
 /* ---------- 新規追加フォーム ---------- */
@@ -603,16 +413,6 @@ body {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
-.btn-image {
-    align-self: flex-start;
-    padding: 10px 24px;
-    border: 1px solid var(--cafe-share-border);
-    border-radius: 4px;
-    font-size: 14px;
-    color: var(--cafe-share-gray);
-    text-decoration: none;
-    background: #fff;
 }
 .btn-submit:hover { background-color: var(--cafe-share-red-dark); }
 .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
@@ -972,20 +772,6 @@ dd {
 }
 
 /* ---------- メニュー投稿フォーム ---------- */
-.menu-form-area {
-    margin-top: 32px;
-    background: #fafaf8;
-    border: 1px solid var(--cafe-share-border);
-    border-radius: 8px;
-    padding: 20px 24px;
-}
-.menu-form-area h2 {
-    font-size: 15px;
-    font-weight: bold;
-    margin-bottom: 16px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--cafe-share-border);
-}
 .menu-form {
     display: flex;
     flex-direction: column;
@@ -1060,14 +846,6 @@ dd {
 }
 
 /* ---------- モーダル ---------- */
-.modal-title {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--cafe-share-border);
-    color: var(--cafe-share-text);
-}
 .modal-form-actions {
     display: flex;
     justify-content: flex-end;
