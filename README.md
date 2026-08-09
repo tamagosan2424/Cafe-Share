@@ -45,18 +45,18 @@
 ### バックエンド
 
 | 技術 |
-|---|---|
-| PHP |
-| Laravel |
+|---|
+| PHP 8.2 |
+| Laravel 11 |
 | Laravel Breeze |
-| Inertia.js (Laravel側) |
+| Inertia.js |
 
 ### フロントエンド
 
 | 技術 |
-|---|---|
-| Vue.js |
-| Inertia.js (Vue側) |
+|---|
+| Vue.js 3 |
+| Inertia.js |
 | Tailwind CSS |
 | Headless UI |
 | Vite |
@@ -77,6 +77,7 @@
 https://app.diagrams.net/#G1zXIlOq87Nu-_zonHKnEAweBarkIOpjqy#%7B%22pageId%22%3A%22cEn2leTTyC_-5xQQTLLv%22%7D
 
 こちらに記載しています。
+
 ---
 
 ## インフラ構成図
