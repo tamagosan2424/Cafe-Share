@@ -4,7 +4,7 @@
 
 **Cafe Share** は、お気に入りのカフェ情報を登録・共有できるWebサービスです。
 
-> カフェの情報を投稿し、メニューやレビューを通じてユーザー同士でカフェ体験をシェアできます。
+カフェの情報を投稿し、メニューやレビューを通じてユーザー同士でカフェ体験をシェアできます。
 
 ---
 
@@ -44,22 +44,22 @@
 
 ### バックエンド
 
-| 技術 | バージョン |
+| 技術 |
 |---|---|
-| PHP | 8.2 |
-| Laravel | 11 |
-| Laravel Breeze | 2.4 |
-| Inertia.js (Laravel側) | 2.0 |
+| PHP |
+| Laravel |
+| Laravel Breeze |
+| Inertia.js (Laravel側) |
 
 ### フロントエンド
 
-| 技術 | バージョン |
+| 技術 |
 |---|---|
-| Vue.js | 3.4 |
-| Inertia.js (Vue側) | 2.0 |
-| Tailwind CSS | 3.2 |
-| Headless UI | 1.7 |
-| Vite | 6.0 |
+| Vue.js |
+| Inertia.js (Vue側) |
+| Tailwind CSS |
+| Headless UI |
+| Vite |
 
 ### インフラ / 開発環境
 
@@ -74,105 +74,21 @@
 
 ## ER図 / テーブル構成
 
-```
-users
-  ├── profiles
-  ├── cafes
-  │     ├── cafe_images（サブ画像）
-  │     ├── menus（メニュー）
-  │     ├── reviews（レビュー）
-  │     └── cafe_tag（タグ中間テーブル）
-  └── tags
-```
+https://app.diagrams.net/#G1zXIlOq87Nu-_zonHKnEAweBarkIOpjqy#%7B%22pageId%22%3A%22cEn2leTTyC_-5xQQTLLv%22%7D
 
-| テーブル | 主なカラム |
-|---|---|
-| users | name, email, password |
-| cafes | user_id, name, description, address, phone_number, opening_at, closing_at, image |
-| cafe_images | cafe_id, image |
-| menus | cafe_id, name, description, price, image |
-| reviews | cafe_id, user_id, rating, comment |
-| tags | name |
-
+こちらに記載しています。
 ---
 
-## セットアップ手順
-
-### 前提条件
-
-- Docker / Docker Compose がインストール済みであること
-
-### 1. リポジトリのクローン
-
-```bash
-git clone git@github.com:tamagosan2424/Cafe-Share.git
-cd Cafe-Share
-```
-
-### 2. 環境変数の設定
-
-```bash
-cp src/.env.example src/.env
-```
-
-`.env` を以下の内容に編集します。
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=db
-DB_PORT=3306
-DB_DATABASE=laravel-docker
-DB_USERNAME=user
-DB_PASSWORD=password
-
-# Google Maps / Places API を使用する場合
-GOOGLE_MAPS_API_KEY=your_api_key_here
-```
-
-### 3. Dockerコンテナの起動
-
-```bash
-docker compose up -d --build
-```
-
-### 4. アプリケーションキーの生成
-
-```bash
-docker compose exec app php artisan key:generate
-```
-
-### 5. マイグレーション & シーダー
-
-```bash
-docker compose exec app php artisan migrate --seed
-```
-
-### 6. ストレージのリンク作成
-
-```bash
-docker compose exec app php artisan storage:link
-```
-
-### 7. フロントエンドのビルド
-
-```bash
-docker compose exec app npm install
-docker compose exec app npm run build
-```
-
-### 8. アクセス
-
-[http://localhost:8900](http://localhost:8900) をブラウザで開きます。
+## インフラ構成図
 
 ---
 
 ## 工夫した点
 
-- **認可制御** — `PostPolicy` を用いて、カフェの編集・削除・メニュー操作を投稿者本人のみに制限
+- **認可制御** — カフェの編集・削除・メニュー操作を投稿者本人のみに制限
 - **画像管理** — メイン画像・サブ画像・メニュー画像を `storage/public` に保存し、柔軟に管理
 - **Google Maps連携** — カフェの住所をもとにiframe埋め込みで地図を自動表示
-- **SPA構成** — Inertia.js により、Laravel + Vue 3 でSPAライクな操作感を実現
-- **レスポンシブ対応** — Tailwind CSS でモバイル・PCどちらでも見やすいレイアウト
+- **モーダル機能の採用** — Headless UIによりメニュー追加時にモーダル表示をするようにした
 
 ---
 
