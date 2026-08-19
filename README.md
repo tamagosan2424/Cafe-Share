@@ -80,8 +80,8 @@ https://app.diagrams.net/#G1zXIlOq87Nu-_zonHKnEAweBarkIOpjqy#%7B%22pageId%22%3A%
 ---
 
 ## インフラ構成図
+![構成図](https://github.com/user-attachments/assets/de4011ad-c61e-4ff3-81ff-3ca476e0c496)
 
-https://github.com/user-attachments/assets/1c3d0c4b-d8a6-4e21-a399-c1bbd424da35
 ---
 
 ## 工夫した点
