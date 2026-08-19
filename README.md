@@ -68,7 +68,6 @@
 | Docker / Docker Compose | コンテナ構成（Nginx / PHP-FPM / MySQL） |
 | MySQL | データベース |
 | Google Maps Embed API | カフェ詳細画面の地図表示 |
-| Google Places API | カフェ写真の取得 |
 
 ---
 
@@ -82,6 +81,7 @@ https://app.diagrams.net/#G1zXIlOq87Nu-_zonHKnEAweBarkIOpjqy#%7B%22pageId%22%3A%
 
 ## インフラ構成図
 
+https://github.com/user-attachments/assets/1c3d0c4b-d8a6-4e21-a399-c1bbd424da35
 ---
 
 ## 工夫した点
