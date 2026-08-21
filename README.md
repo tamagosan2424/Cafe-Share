@@ -30,19 +30,23 @@
 
 ## 画面イメージ
 
-カフェ一覧
+**カフェ一覧**
 ![カフェ一覧](https://github.com/user-attachments/assets/a1bca838-14ff-4048-a739-52602c61f472)
 カフェカード形式で一覧表示。平均評価のスター・レビュー件数・営業時間を確認できます
 
-カフェ詳細
+**カフェ詳細**
 ![カフェ詳細](https://github.com/user-attachments/assets/bba570cd-5880-4ac1-bb26-1730f6cc71d1)
+
 ![カフェ詳細2](https://github.com/user-attachments/assets/a6ecaa77-4be9-4bbd-8290-efacb941aeb8)
 カフェ情報・Google マップ・メニュー一覧・レビュー一覧を表示。投稿者はメニューの追加・削除も可能
 
-| カフェ登録 | カフェ編集 |
-|---|---|
-| 店名・住所・営業時間・電話番号・説明・メイン画像を入力して投稿 | 投稿済みのカフェ情報をフォームで更新。サブ画像の追加も可能 |
+**カフェ登録**
+![カフェ登録](https://github.com/user-attachments/assets/e84552e8-bad8-4e65-9e15-424346c06bba)
+店名・住所・営業時間・電話番号・説明・メイン画像を入力して投稿 | 投稿済みのカフェ情報をフォームで更新。サブ画像の追加も可能
 
+**カフェ編集**
+![カフェ編集](https://github.com/user-attachments/assets/072fe106-5532-4f1a-b295-eea2e9e5f0f1)
+投稿済みのカフェ情報をフォームで更新。サブ画像の追加も可能
 ---
 
 ## 使用技術
@@ -95,6 +99,7 @@ https://app.diagrams.net/#G1zXIlOq87Nu-_zonHKnEAweBarkIOpjqy#%7B%22pageId%22%3A%
 - **画像管理** — メイン画像・サブ画像・メニュー画像を `storage/public` に保存し、柔軟に管理
 - **Google Maps連携** — カフェの住所をもとにiframe埋め込みで地図を自動表示
 - **モーダル機能の採用** — Headless UIによりメニュー追加時にモーダル表示をするようにした
+- **certbotの採用**　- CertBotを採用することでコストを削減しつつhttps化した
 
 ---
 
