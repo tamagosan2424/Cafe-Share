@@ -83,9 +83,7 @@
 
 ## ER図 / テーブル構成
 
-https://app.diagrams.net/#G1zXIlOq87Nu-_zonHKnEAweBarkIOpjqy#%7B%22pageId%22%3A%22cEn2leTTyC_-5xQQTLLv%22%7D
-
-こちらに記載しています。
+![ER図](https://github.com/user-attachments/assets/79a6eaa1-62e7-4825-93a6-9e1a1d1db511)
 
 ---
 
