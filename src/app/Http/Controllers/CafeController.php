@@ -48,16 +48,16 @@ class CafeController extends Controller
         $cafe->load('reviews.user', 'menus')  // ←レビュー+投稿者名、メニュー
             ->loadAvg('reviews', 'rating')
             ->loadCount('reviews');
-        $canEdit   = auth()->user()->can('update', $cafe);
-        return Inertia::render('Cafe/Show', compact('cafe', 'canEdit'));
+        // $canEdit   = auth()->user()->can('update', $cafe);
+        return Inertia::render('Cafe/Show', compact('cafe'));
     }
 
     // 編集画面を表示（カフェのデータを渡す）
     public function edit(Cafe $cafe)
     {
-        $this->authorize('update', $cafe);
-        $canDelete = auth()->user()->can('delete', $cafe);
-        return Inertia::render('Cafe/Edit', compact('cafe', 'canDelete'));
+        // $this->authorize('update', $cafe);
+        // $canDelete = auth()->user()->can('delete', $cafe);
+        return Inertia::render('Cafe/Edit', compact('cafe'));
     }
 
     // 更新処理
@@ -91,7 +91,7 @@ class CafeController extends Controller
     // 削除処理
     public function destroy(Request $req, Cafe $cafe){
     // 保存
-    $this->authorize('delete', $cafe);
+    // $this->authorize('delete', $cafe);
     $cafe->delete();
     return redirect()->route('dashboard');
     }
