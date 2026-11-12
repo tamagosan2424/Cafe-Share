@@ -16,10 +16,10 @@ class PostPolicy
     }
 
     /**
-     * カフェを削除できるか（投稿者本人 or 管理者）
+     * カフェを削除できるか（投稿者本人のみ）
      */
     public function delete(User $user, Cafe $cafe): bool
     {
-        return $user->id === $cafe->user_id || $user->is_admin;
+        return $user->id === $cafe->user_id;
     }
 }

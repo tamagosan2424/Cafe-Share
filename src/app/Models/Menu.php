@@ -9,7 +9,13 @@ class Menu extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['cafe_id', 'name', 'description', 'price', 'image'];
+    protected $fillable = [
+        'cafe_id',
+        'name',
+        'description',
+        'price',
+        'image',
+    ];
 
     public function cafe()
     {

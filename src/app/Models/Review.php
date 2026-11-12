@@ -10,12 +10,19 @@ class Review extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'cafe_id', 'rating', 'comment'
+        'user_id',
+        'cafe_id',
+        'rating',
+        'comment',
     ];
 
     public function cafe()
-        { return $this->belongsTo(Cafe::class); }
+    {
+        return $this->belongsTo(Cafe::class);
+    }
 
     public function user()
-        { return $this->belongsTo(User::class); }
+    {
+        return $this->belongsTo(User::class);
+    }
 }

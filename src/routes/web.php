@@ -22,7 +22,7 @@ Route::get('/', function(){
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [CafeController::class, 'index'])->name('dashboard');//一覧画面 トップ画面を使わないのであえて一覧画面を表示
+    Route::get('/', [CafeController::class, 'index'])->name('dashboard');//一覧画面 トップ画面を使わないのであえて一覧画面を表示
     Route::get('cafes', [CafeController::class, 'index'])->name('cafes.index');//一覧画面
     Route::get('cafes/create', [CafeController::class, 'create'])->name('cafes.create');//新規作成画面
     Route::post('cafes', [CafeController::class, 'store'])->name('cafes.store');//作成処理
@@ -36,7 +36,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('cafes/{cafe}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
     Route::post('cafes/{cafe}/menus', [MenuController::class, 'store'])->name('menus.store');           // メニュー追加
     Route::delete('cafes/{cafe}/menus/{menu}', [MenuController::class, 'destroy'])->name('menus.destroy'); // メニュー削除
-    Route::get('/api/cafe-photos', [CafeController::class, 'fetchGooglePhotos']);
+    // Route::get('/api/cafe-photos', [CafeController::class, 'fetchGooglePhotos']); // Google Maps API 未使用のためコメントアウト
 });
 
 // 認可なし（ログイン不要）の編集・削除ルート
